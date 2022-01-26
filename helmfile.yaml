@@ -1,0 +1,28 @@
+releases:
+- name: ingress
+  namespace: "{{ .Namespace }}"
+  chart: charts/ingress/ingress
+  missingFileHandler: Warn
+  labels:
+    app: ingress
+  values:
+  - charts/ingress/values.dev.yaml
+- name: php
+  namespace: "{{ .Namespace }}"
+  chart: charts/php/php
+  missingFileHandler: Warn
+  labels:
+    app: php
+    partial: false
+  values:
+  - charts/php/values.dev.yaml
+- name: php
+  namespace: "{{ .Namespace }}"
+  chart: charts/php/php
+  missingFileHandler: Warn
+  labels:
+    app: php
+    partial: true
+  values:
+  - charts/php/values.dev.yaml
+  - charts/php/partial.yaml
